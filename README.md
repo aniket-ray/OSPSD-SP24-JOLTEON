@@ -29,7 +29,15 @@ make
 ./calculator_app
 ```
 Should print 256 + 256 = 512 in terminal
-
+## Test
+We use GoogleTest for test framework
+```shell
+mkdir build
+cd build
+cmake ..
+make
+./calculator_tests
+```
 ## Code Formatting 
 Using Google Style in Clang for enforcing code formatting
 ## Continues Integration
