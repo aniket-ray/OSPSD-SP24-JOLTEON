@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 #include "../src/calculator.cpp"
 
-TEST(AdditionTest, TwoPlusTwoEqualsFour) {
+TEST(SimpleSumAssertion, OnePlusOneEqualsToTwo) {
 EXPECT_EQ(add(1, 1), 2);
 }
 
