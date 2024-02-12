@@ -19,8 +19,8 @@ jobs:
           command: |
             mkdir build
             cd build
-            export CC=clang
-            export CXX=clang++
+            export CC=$(which clang)
+            export CXX=$(which clang++)
             cmake ..
             make
 
