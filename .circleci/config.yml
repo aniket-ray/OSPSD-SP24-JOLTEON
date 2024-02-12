@@ -10,11 +10,9 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            sudo apt update
-            sudo apt install -y clang
-            sudo apt search clang
-            sudo apt install -y clang-14
-            sudo apt install -y cmake
+            apt-get update
+            apt-get install -y clang-14
+            apt-get install -y cmake
 
       - run:
           name: Build
