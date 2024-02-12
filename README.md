@@ -39,13 +39,43 @@ ctest
 This project is configured for CircleCI. The .circleci/config.yml file contains all the CI settings. CI will automatically build the project, run tests, and perform static analysis with Clang-Tidy when code is pushed to the repository.
 
 
-### Static Analysis Tool: 
-Using Clang-Tidy for C++
+### Static Analysis Tool:
+
+Static Analysis Tool Used: `clang-tidy`
+
+#### Installing `clang-tidy` On Linux (Ubuntu)
+```shell
+sudo apt-get update
+sudo apt-get install clang-tidy
+```
+
+#### Running `clang-tidy` on codebase
+
+```shell
+clang-tidy -p build/ $(find . -name '*.cpp')
+```
 
 ### Code Formatting: 
-Using Google Style in Clang for enforcing code formatting
+Code Formatter Used: `clang-format`
+Style: `Google`
+
+#### Installing `clang-format` On Linux (Ubuntu)
+
+```shell
+sudo apt-get update
+sudo apt-get install clang-format
+```
+
+### Running `clang-format` on codebase
+
+```shell
+find . \( -iname \*.h -o -iname \*.cpp -o -iname \*.cxx -o -iname \*.hpp \) -exec clang-format -i {} +
+```
 
 ### Issue and Pull Request Template
-To be done
+
+PR Template: `.github/PULL_REQUEST_TEMPLATE.md`
+Bug/Issue Template: `.github/ISSUE_TEMPLATE/c---bug-report.md`
+
 ### Licence
 MIT
