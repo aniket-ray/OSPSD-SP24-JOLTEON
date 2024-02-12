@@ -10,9 +10,16 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            # Add the LLVM repository
+            wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+            apt-add-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main"
             apt-get update
-            apt-get install -y clang cmake
-            
+            apt-get install -y clang-14 cmake
+            # Update alternatives to use Clang 14 as the default Clang version
+            update-alternatives --install /usr/bin/clang clang /usr/bin/clang-14 100
+            update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-14 100
+
+
       - run:
           name: Build
           command: |
