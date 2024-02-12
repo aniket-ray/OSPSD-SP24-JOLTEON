@@ -3,15 +3,16 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ubuntu:latest
+      - image: conanio/clang14-ubuntu16.04
 
     steps:
       - checkout  
       - run:
           name: Install dependencies
           command: |
-            apt-get update 
-            apt-get install -y wget clang-14 cmake
+            apt-get update
+            apt-get install -y cmake
+
 
       - run:
           name: Build
