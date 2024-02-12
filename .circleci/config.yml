@@ -19,9 +19,7 @@ jobs:
           command: |
             mkdir build
             cd build
-            export CC=$(which clang)
-            export CXX=$(which clang++)
-            cmake ..
+            cmake -D CMAKE_CXX_COMPILER="usr/bin/clang++-14" -D CMAKE_C_COMPILER="usr/bin/clang-14" ..
             make
 
       - run:
