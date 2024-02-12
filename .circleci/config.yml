@@ -2,10 +2,6 @@ version: 2.1
 
 jobs:
   build:
-    filters:
-      branches:
-        only:
-          - main
     docker:
       - image: ubuntu:latest
 
