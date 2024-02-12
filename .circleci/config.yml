@@ -6,7 +6,6 @@ jobs:
       branches:
         only:
           - main
-          
     docker:
       - image: ubuntu:latest
 
