@@ -11,7 +11,7 @@ jobs:
           name: Install dependencies
           command: |
             apt-get update
-            apt-get install -y clang-14
+            apt-get install -y clang-14 clang-tidy clang-format
             apt-get install -y cmake
 
       - run:
@@ -21,6 +21,18 @@ jobs:
             cd build
             cmake -D CMAKE_CXX_COMPILER="/usr/bin/clang++-14" -D CMAKE_C_COMPILER="/usr/bin/clang-14" ..
             make
+
+      - run:
+          name: Run Clang-Format
+          command: |
+            find . -regex '.*\.\(cpp\|hpp\|c\|h\)' -exec clang-format-14 -i {} +
+            git diff --exit-code || (echo "Code formatting differences found. Please run 'clang-format' on your code." && false)
+
+      - run:
+          name: Run Clang-Tidy
+          command: |
+            cd build
+            run-clang-tidy-14 -header-filter='.*' -checks='-*,clang-analyzer-*,clang-diagnostic-*,modernize-*,performance-*,portability-*,readability-*'
 
       - run:
           name: Run tests
